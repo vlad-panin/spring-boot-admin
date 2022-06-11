@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spring-boot-admin
+spec:
+  destination:
+    name: ''
+    namespace: work
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: helm
+    repoURL: 'git@github.com:vlad-panin/spring-boot-admin.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  project: work
