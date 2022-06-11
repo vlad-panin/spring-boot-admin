@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        maven { url "https://kdchubapp01.alfa.bank.int:8082/artifactory/maven" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.6.8"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: "io.spring.dependency-management"
+apply plugin: 'org.springframework.boot'
+
+//sourceCompatibility = 1.8
+
+repositories {
+    maven { url "https://kdchubapp01.alfa.bank.int:8082/artifactory/maven" }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'de.codecentric:spring-boot-admin-server'
+    implementation 'de.codecentric:spring-boot-admin-server-cloud'
+    implementation 'de.codecentric:spring-boot-admin-server-ui'
+    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.3'
+        mavenBom 'de.codecentric:spring-boot-admin-dependencies:2.6.5'
+    }
+}
