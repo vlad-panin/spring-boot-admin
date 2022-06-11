@@ -1,9 +1,9 @@
 buildscript {
     repositories {
-        maven { url "https://kdchubapp01.alfa.bank.int:8082/artifactory/maven" }
+        mavenCentral()
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.6.8"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.2.RELEASE"
     }
 }
 
@@ -14,10 +14,10 @@ plugins {
 apply plugin: "io.spring.dependency-management"
 apply plugin: 'org.springframework.boot'
 
-//sourceCompatibility = 1.8
+sourceCompatibility = 1.8
 
 repositories {
-    maven { url "https://kdchubapp01.alfa.bank.int:8082/artifactory/maven" }
+    mavenCentral()
 }
 
 dependencies {
@@ -32,7 +32,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.3'
-        mavenBom 'de.codecentric:spring-boot-admin-dependencies:2.6.5'
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE'
+        mavenBom 'de.codecentric:spring-boot-admin-dependencies:2.2.2'
     }
 }
