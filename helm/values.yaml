@@ -7,7 +7,7 @@ image:
   repository: deithwen/dev
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: spring-boot-admin.b2d7791
+  tag: spring-boot-admin.001
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
