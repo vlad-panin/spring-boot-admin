@@ -22,7 +22,6 @@ dependencies {
     implementation 'de.codecentric:spring-boot-admin-server-cloud'
     implementation 'de.codecentric:spring-boot-admin-server-ui'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-open-service-broker:3.5.1'
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
 }
 
