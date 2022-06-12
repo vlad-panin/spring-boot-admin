@@ -6,7 +6,7 @@ metadata:
   name: spring-boot-admin
   namespace: devops
 spec:
-  replicas: 0
+  replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
