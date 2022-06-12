@@ -26,31 +26,31 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app: spring-boot-admin
-                  app.kubernetes.io/instance: spring-boot-admin
-              topologyKey: topology.kubernetes.io/zone
-            weight: 100
-          - podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app: spring-boot-admin
-                  app.kubernetes.io/instance: spring-boot-admin
-              topologyKey: kubernetes.io/hostname
-            weight: 90
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: spring-boot-admin
+                    app.kubernetes.io/instance: spring-boot-admin
+                topologyKey: topology.kubernetes.io/zone
+              weight: 100
+            - podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: spring-boot-admin
+                    app.kubernetes.io/instance: spring-boot-admin
+                topologyKey: kubernetes.io/hostname
+              weight: 90
       containers:
-      - name: spring-boot-admin
-        image: deithwen/dev:spring-boot-admin.bd01f23
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        - containerPort: 8081
-          protocol: TCP
+        - name: spring-boot-admin
+          image: deithwen/dev:spring-boot-admin.b31b74b
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8081
+              protocol: TCP
       imagePullSecrets:
-      - name: dockerhub-creds
+        - name: dockerhub-creds
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       serviceAccountName: spring-boot-admin-sa
