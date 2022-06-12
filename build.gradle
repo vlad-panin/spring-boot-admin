@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'org.springframework.boot' version '2.6.8'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -11,8 +11,8 @@ repositories {
 }
 
 ext {
-    set('springBootAdminVersion', "2.6.5")
-    set('springCloudVersion', "Hoxton.RELEASE")
+    set('springBootAdminVersion', "2.6.7")
+    set('springCloudVersion', "2021.0.3")
 }
 
 dependencies {
@@ -21,7 +21,8 @@ dependencies {
     implementation 'de.codecentric:spring-boot-admin-server'
     implementation 'de.codecentric:spring-boot-admin-server-cloud'
     implementation 'de.codecentric:spring-boot-admin-server-ui'
-    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-all'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-open-service-broker:3.5.1'
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
 }
 
