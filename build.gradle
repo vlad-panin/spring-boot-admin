@@ -1,23 +1,18 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.2.RELEASE"
-    }
-}
-
 plugins {
+    id 'org.springframework.boot' version '2.6.8'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
-apply plugin: "io.spring.dependency-management"
-apply plugin: 'org.springframework.boot'
-
-sourceCompatibility = 1.8
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
+}
+
+ext {
+    set('springBootAdminVersion', "2.6.5")
+    set('springCloudVersion', "2021.0.3")
 }
 
 dependencies {
@@ -32,7 +27,7 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.RELEASE'
-        mavenBom 'de.codecentric:spring-boot-admin-dependencies:2.2.2'
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:${springBootAdminVersion}'
+        mavenBom 'de.codecentric:spring-boot-admin-dependencies:${springCloudVersion}'
     }
 }
