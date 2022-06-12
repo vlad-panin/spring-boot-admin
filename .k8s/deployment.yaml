@@ -42,7 +42,7 @@ spec:
               weight: 90
       containers:
         - name: spring-boot-admin
-          image: deithwen/dev:spring-boot-admin.1847afa
+          image: deithwen/dev:spring-boot-admin.3731460
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
