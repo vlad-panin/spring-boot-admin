@@ -49,29 +49,6 @@ spec:
           protocol: TCP
         - containerPort: 8081
           protocol: TCP
-        livenessProbe:
-          failureThreshold: 6
-          httpGet:
-            path: /actuator/health
-            port: 8081
-          initialDelaySeconds: 180
-          periodSeconds: 30
-          timeoutSeconds: 5
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /actuator/health
-            port: 8081
-          initialDelaySeconds: 12
-          periodSeconds: 7
-          timeoutSeconds: 5
-        resources:
-          limits:
-            cpu: '1'
-            memory: 500M
-          requests:
-            cpu: 5m
-            memory: 150M
       imagePullSecrets:
       - name: dockerhub-creds
       dnsPolicy: ClusterFirst
