@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-boot-admin-actuator
+  namespace: devops
+  labels:
+    app: spring-boot-admin
+spec:
+  ports:
+    - name: 8081-tcp
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+  selector:
+    app: spring-boot-admin

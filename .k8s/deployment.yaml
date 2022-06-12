@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spring-boot-admin
+  name: spring-boot-admin
+  namespace: devops
+spec:
+  replicas: 0
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: spring-boot-admin
+      app.kubernetes.io/instance: spring-boot-admin
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: spring-boot-admin
+        app.kubernetes.io/instance: spring-boot-admin
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: spring-boot-admin
+                  app.kubernetes.io/instance: spring-boot-admin
+              topologyKey: topology.kubernetes.io/zone
+            weight: 100
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app: spring-boot-admin
+                  app.kubernetes.io/instance: spring-boot-admin
+              topologyKey: kubernetes.io/hostname
+            weight: 90
+      containers:
+      - name: spring-boot-admin
+        image: deithwen/dev:spring-boot-admin.bd01f23
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8081
+          protocol: TCP
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /actuator/health
+            port: 8081
+          initialDelaySeconds: 180
+          periodSeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8081
+          initialDelaySeconds: 12
+          periodSeconds: 7
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: '1'
+            memory: 500M
+          requests:
+            cpu: 5m
+            memory: 150M
+      imagePullSecrets:
+      - name: dockerhub-creds
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      serviceAccountName: spring-boot-admin-sa
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

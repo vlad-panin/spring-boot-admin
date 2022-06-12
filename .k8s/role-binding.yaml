@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: spring-boot-admin-role-binding
+  namespace: devops
+  labels:
+    app: spring-boot-admin
+subjects:
+  - kind: ServiceAccount
+    name: spring-boot-admin-sa
+    namespace: devops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: spring-boot-admin-role

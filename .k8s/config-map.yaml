@@ -1,0 +1,34 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: spring-boot-admin
+  namespace: devops
+data:
+  application.yml: |-
+    spring:
+      application:
+        name: spring-boot-admin
+      boot:
+        admin:
+          ui:
+            brand: "Alfa Spring Boot"
+            title: "Spring Boot Admin"
+      cloud:
+        kubernetes:
+          discovery:
+            all-namespaces: false
+            service-labels:
+              type: actuator
+    server:
+      port: 8080
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"
+      server:
+        port: 8081
+    logging:
+      level:
+        org.springframework.cloud.kubernetes: TRACE
+        de.codecentric.boot.admin.discovery.ApplicationDiscoveryListener: DEBUG

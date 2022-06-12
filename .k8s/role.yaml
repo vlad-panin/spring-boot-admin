@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: spring-boot-admin-role
+  namespace: devops
+  labels:
+    app: spring-boot-admin
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - endpoints
+      - services
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
