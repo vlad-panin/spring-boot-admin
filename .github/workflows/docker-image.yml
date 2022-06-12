@@ -63,7 +63,7 @@ jobs:
       - name: Update current version
         uses: mikefarah/yq@3.3.2
         with:
-          cmd: yq w -i .k8s/deployment.yml spec.template.spec.containers[0].image deithwen/dev:spring-boot-admin.${{ steps.vars.outputs.sha_short }}
+          cmd: yq w -i .k8s/deployment.yaml spec.template.spec.containers[0].image deithwen/dev:spring-boot-admin.${{ steps.vars.outputs.sha_short }}
 
       - name: Setup git config
         run: |
