@@ -69,7 +69,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "<>"
-          git add k8s-spring-boot-admin.yml
+          git add .k8s
           git commit -m "update code version to ${{ steps.vars.outputs.sha_short }}"
 
       - name: Push changes
